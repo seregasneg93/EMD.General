@@ -10,7 +10,7 @@ namespace EDM.DataModel
         public AppDbContext(DbContextOptions<AppDbContext> options)
                    : base(options)
         {
-            Database.EnsureCreated();
+
         }
 
         public DbSet<Assignment> Assignments { get; set; }

@@ -29,11 +29,10 @@ namespace EDM.WebUI
         {
             services.AddDbContextPool<AppDbContext>(options =>
             {
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("EMDdb"));
             });
 
-            services.AddControllersWithViews()
-                .AddRazorRuntimeCompilation();
+            services.AddControllersWithViews();
 
             services.AddScoped<IAssigmentRep, AssigmentRep>();
         }
