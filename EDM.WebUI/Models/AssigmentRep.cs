@@ -16,6 +16,11 @@ namespace EDM.WebUI.Models
             _context = context;
         }
 
+        public void Test()
+        {
+            
+        }
+
         IEnumerable<Assignment> IAssigmentRep.GetAllAssigments()
         {
             return _context.Assignments.ToList();
