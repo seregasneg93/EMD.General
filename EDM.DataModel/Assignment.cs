@@ -13,15 +13,22 @@ namespace EDM.DataModel
         public string Description { get; set; }
         public string Implement { get; set; }
         public DateTime DateRegistered { get; set; }
-        public string Status { get; set; }
+        public WorkStatus Status { get; set; }
         public double Complexity { get; set; }
         public double Achievement { get; set; }
-        public double DateEnd { get; set; }
+        public DateTime DateEnd { get; set; }
 
-        [JsonIgnoreAttribute]
+        [JsonIgnore]
         public virtual Assignment Parent { get; set; }
-        //public virtual IEnumerable<Assignment> Children { get; set; }
         [InverseProperty("Parent")]
         public virtual ICollection<Assignment> RefChildren { get; set; }
+    }
+
+    public enum WorkStatus
+    {
+        Assigned,
+        InProgress,
+        Stopped,
+        Completed
     }
 }

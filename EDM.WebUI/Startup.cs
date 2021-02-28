@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,10 +30,17 @@ namespace EDM.WebUI
         {
             services.AddDbContextPool<AppDbContext>(options =>
             {
+#if PSQL
+                options.UseNpgsql(Configuration.GetConnectionString("Postgres"));
+#else
                 options.UseSqlServer(Configuration.GetConnectionString("EMDdb"));
+#endif
             });
 
-            services.AddControllersWithViews();
+            var mvc = services.AddControllersWithViews();
+#if DEBUG
+            mvc.AddRazorRuntimeCompilation();
+#endif
 
             services.AddScoped<IAssigmentRep, AssigmentRep>();
         }

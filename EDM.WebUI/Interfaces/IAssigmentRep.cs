@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EDM.WebUI.Interfaces
 {
-  public interface IAssigmentRep
+    public interface IAssigmentRep
     {
         IEnumerable<Assignment> GetAllAssigments();
     }

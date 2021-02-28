@@ -1,0 +1,57 @@
+﻿@model EDM.DataModel.Assignment
+
+<div class="container content">
+    <form asp-antiforgery="true">
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <div class="mb-3 row" @(ViewBag.IsParent ?? false ? "" : "hidden")>
+            <label for="fieldName" class="col-sm-2 col-form-label">@(Resource.Assignment_Parent)</label>
+            <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" value="@ViewBag.ParentName">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="Name" class="col-sm-2 col-form-label">@(Resource.Assignment_Name)</label>
+            <div class="col-sm-10">
+                <input asp-for="Name" class="form-control" value="@Model?.Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="fieldDescription" class="col-sm-2 col-form-label">@(Resource.Assignment_Description)</label>
+            <div class="col-sm-10">
+                <textarea type="text" name="Description" class="form-control" id="fieldDescription" rows="3" value="@Model?.Description"></textarea>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="Implement" class="col-sm-2 col-form-label">@(Resource.Assignment_Implement)</label>
+            <div class="col-sm-10">
+                <input asp-for="Implement" class="form-control" value="@Model?.Implement" />
+                <span asp-validation-for="Implement" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="DateEnd" class="col-sm-2 col-form-label">@(Resource.Assignment_DateEnd)</label>
+            <div class="col-sm-10">
+                <input type="date" asp-for="DateEnd" class="form-control" value="@(Model?.DateEnd ?? DateTime.Now)" />
+                <span asp-validation-for="DateEnd" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-sm-10"></div>
+            <div class="col-sm-2">
+                <input type="submit" class="form-control">
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"
+            asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"
+            asp-fallback-src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive">
+    </script>
+}

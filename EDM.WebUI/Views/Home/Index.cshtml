@@ -10,18 +10,78 @@
 
 
 
-<div class="container">
-    <div class="col-3">
-        
-        <!--Хорошо))-->
-
-        <div id="treeView" class="treeCSS">
-
+<div class="container content">
+    <div class="row align-items-center">
+        <div class="col-3">
+            <a class="btn btn-link" href="/home/create">@(Resource.UI_CreateTask)</a>
+            <a class="btn btn-link" onclick="deleteSelected()" href="#" id="deleteButton" hidden>@(Resource.UI_DeleteButton)</a>
+            <div id="treeView" class="treeCSS">
+                @(Resource.UI_Loading)
+            </div>
         </div>
-    </div>
-    <div class="col-9">
+        <div class="col-9">
+            <div id="infoPanel" class="container">
+                <div class="mb-3 row ">
+                    <div class="col-sm-12">
+                        <button class="btn btn-outline-primary" hidden id="changeStatusBegin" onclick="changeStatus(1)">@(Resource.UI_Begin)</button>
+                        <button class="btn btn-outline-primary" hidden id="changeStatusResume" onclick="changeStatus(1)">@(Resource.UI_Resume)</button>
+                        <button class="btn btn-outline-success" hidden id="changeStatusComplete" onclick="changeStatus(3)">@(Resource.UI_Complete)</button>
+                        <button class="btn btn-outline-danger" hidden id="changeStatusStop" onclick="changeStatus(2)">@(Resource.UI_Stop)</button>
+                        <a id="editLink" class="btn btn-link">Edit</a>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="fieldName" class="col-sm-2 col-form-label">@(Resource.Assignment_Name)</label>
+                    <div class="col-sm-8">
+                        <input type="text" readonly class="form-control-plaintext" id="fieldName">
+                    </div>
+                    <div class="col-sm-2">
+                        <p id="fieldStatus"></p>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="fieldDescription" class="col-sm-2 col-form-label">@(Resource.Assignment_Description)</label>
+                    <div class="col-sm-10">
+                        <textarea type="text" readonly class="form-control-plaintext" id="fieldDescription" rows="3"></textarea>
+                    </div>
+                </div>
 
-    </div>
+                <div class="mb-3 row">
+                    <label for="fieldDateRegistered" class="col-sm-2 col-form-label">@(Resource.Assignment_DateRegistered)</label>
+                    <div class="col-sm-10">
+                        <input type="date" readonly class="form-control-plaintext" id="fieldDateRegistered">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="fieldDateEnd" class="col-sm-2 col-form-label">@(Resource.Assignment_DateEnd)</label>
+                    <div class="col-sm-10">
+                        <input type="date" readonly class="form-control-plaintext" id="fieldDateEnd">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="fieldOwnComplexity" class="col-sm-2 col-form-label">@(Resource.Assignment_OwnComplexity)</label>
+                    <div class="col-sm-4">
+                        <input type="number" readonly class="form-control-plaintext" id="fieldOwnComplexity">
+                    </div>
+                    <label for="fieldOwnAchievement" class="col-sm-2 col-form-label">@(Resource.Assignment_OwnAchievement)</label>
+                    <div class="col-sm-4">
+                        <input type="number" readonly class="form-control-plaintext" id="fieldOwnAchievement">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="fieldComplexity" class="col-sm-2 col-form-label">@(Resource.Assignment_Complexity)</label>
+                    <div class="col-sm-4">
+                        <input type="number" readonly class="form-control-plaintext" id="fieldComplexity">
+                    </div>
+                    <label for="fieldAchievement" class="col-sm-2 col-form-label">@(Resource.Assignment_Achievement)</label>
+                    <div class="col-sm-4">
+                        <input type="number" readonly class="form-control-plaintext" id="fieldAchievement">
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        
+    </div>
     <script src="~/js/jquery-3.3.1.min.js"></script>
 </div>
